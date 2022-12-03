@@ -6,23 +6,22 @@ export default createStore({
     todos: [
       {
         text: "Collect packages",
-        done: false,
+        isDone: false,
       },
       {
         text: "Workout",
-        done: false,
+        isDone: false,
       },
       {
         text: "Read one chapter",
-        done: true,
+        isDone: true,
       },
     ],
   },
 
   mutations: {
     addTodo(state, payload) {
-      console.log(state, payload);
-      state.todos.push(payload);
+      state.todos.push(payload.todo);
     },
   },
 });
