@@ -1,0 +1,166 @@
+/* @import "/src/assets/css/fonts.css"; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.root,
+#root,
+#docs-root {
+  /* <--- Text colors ---> */
+  /* primary */
+  --text-primary: #15161b;
+  --text-on-primary-button: #ffffff;
+  --text-accent: #0d3cf1;
+  --text-accent-hover: #0a30c1;
+
+  /* secondary */
+  --text-secondary-01: #6b7192;
+  --text-secondary-02: #898da8;
+  --text-secondary-03: #c4c6d4;
+
+  /* on color */
+  --text-on-color: #ffffff;
+
+  /* text-status */
+  --text-error: #ff497d;
+  --text-warning: #f48b29;
+  --text-success: #4bbe8d;
+
+  /* <--- UI ---> */
+  /* surface */
+  --surface-accent: #0d3cf1;
+  --surface-accent-hover: #0a30c1;
+  --surface-secondary-01: #6b7192;
+  --surface-secondary-02: #c4c6d4;
+  --surface-secondary-03: #e2e3e9;
+  --surface-secondary-04: #f4f5fb;
+  --surface-secondary-05: #ffffff;
+  --surface-territary: #1c1d20;
+
+  /* cards backgrounds */
+  --bg-card-01: #ffffff;
+  --bg-card-02: #f4f5fb;
+  --bg-card-03: #f2fafe;
+  --bg-card-04: #e5f6ed;
+  --bg-card-05: #fff0e2;
+  --bg-card-06: #0d3cf1;
+  --bg-card-07: #f4f5fb;
+
+  /* surface-status */
+  --surface-error: #ff497d;
+  --surface-warning: #f48b29;
+  --surface-success: #4bbe8d;
+
+  /* surface-focus */
+  --surface-tab: #8ae0ff;
+
+  /* BG */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fbfbfb;
+}
+:root .dark {
+  /* <--- Text colors ---> */
+  /* primary */
+  --text-primary: #ffffff;
+  --text-on-primary-button: #15161b;
+  --text-accent: #fbfbfb;
+  --text-accent-hover: #f4f5fb;
+
+  /* secondary */
+  --text-secondary-01: #c4c6d4;
+  --text-secondary-02: #a6aabe;
+  --text-secondary-03: #898da8;
+
+  /* on color */
+  --text-on-color: #ffffff;
+
+  /* text-status */
+  --text-error: #ff497d;
+  --text-warning: #f48b29;
+  --text-success: #4bbe8d;
+
+  /* <--- UI ---> */
+  /* surface */
+  --surface-accent: #fbfbfb;
+  --surface-accent-hover: #f4f5fb;
+  --surface-secondary-01: #c4c6d4;
+  --surface-secondary-02: #a6aabe;
+  --surface-secondary-03: #898da8;
+  --surface-secondary-04: #202124;
+  --surface-secondary-05: #ffffff;
+  --surface-territary: #f4f5fb;
+
+  /* cards backgrounds */
+  --bg-card-01: #3d404a;
+  --bg-card-02: #202124;
+  --bg-card-03: #202124;
+  --bg-card-04: #202124;
+  --bg-card-05: #202124;
+  --bg-card-06: #0d3cf1;
+  --bg-card-07: #202124cc;
+
+  /* surface-status */
+  --surface-error: #ff497d;
+  --surface-warning: #f48b29;
+  --surface-success: #4bbe8d;
+
+  /* surface-focus */
+  --surface-tab: #8ae0ff;
+
+  /* BG */
+  --bg-primary: #2c2d33;
+  --bg-secondary: #202124;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Gilroy", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  text-size-adjust: 100%;
+  word-spacing: 1px;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.CookieDeclaration {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+
+input,
+button {
+  font-family: inherit;
+}
+canvas {
+  max-width: 100%;
+}
+
+/* set default font color for the document */
+/* html {
+  @apply text-letters-primary;
+} */
+
+button {
+  border: none;
+}
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
