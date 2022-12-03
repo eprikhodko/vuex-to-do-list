@@ -46,7 +46,17 @@ const todoInput = ref("");
 const store = useStore();
 
 const addTodo = () => {
-  if (todoInput.value !== "") {
+  const isOnlySpaces = (str: string) => {
+    return /^\s*$/.test(str);
+  };
+
+  const isStringContainOnlySpaces = isOnlySpaces(todoInput.value);
+
+  if (isStringContainOnlySpaces) {
+    todoInput.value = "";
+  }
+
+  if (todoInput.value !== "" && !isStringContainOnlySpaces) {
     store.commit("addTodo", {
       // text: "Sleep well",
       // isDone: false,
