@@ -8,13 +8,14 @@
 
         <button
           type="button"
+          @click="addTodo"
           class="bg-surface-secondary-03 px-32 rounded-4 hover:bg-surface-secondary-02 font-bold text-1 text-letters-primary transition duration-[150ms]"
         >
           Add
         </button>
       </form>
-      <ul class="flex flex-col gap-32 mt-32">
-        <li v-for="todo in todosMockData" :key="todo.text">
+      <!-- <ul class="flex flex-col gap-32 mt-32">
+        <li v-for="todo in store.state.todos" :key="todo.text">
           <div class="flex justify-between">
             <p
               class="text-title-3 cursor-pointer hover:text-letters-secondary-01 transition"
@@ -30,7 +31,7 @@
             </button>
           </div>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </main>
 </template>
@@ -41,18 +42,14 @@ import { useStore } from "vuex";
 const store = useStore();
 console.log(store.state);
 
-const todosMockData = [
-  {
-    text: "Collect packages",
-    done: false,
-  },
-  {
-    text: "Workout",
-    done: false,
-  },
-  {
-    text: "Read one chapter",
-    done: true,
-  },
-];
+const addTodo = () => {
+  store.commit("addTodo", {
+    // text: "Sleep well",
+    // done: false,
+    todo: {
+      text: "payload todo",
+      done: true,
+    },
+  });
+};
 </script>
