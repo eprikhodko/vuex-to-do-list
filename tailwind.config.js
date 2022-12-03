@@ -58,7 +58,7 @@ module.exports = {
 
         // text-status
         error: "var(--text-error)",
-        warning: "var(--text-attention)",
+        warning: "var(--text-warning)",
         success: "var(--text-success)",
       },
 

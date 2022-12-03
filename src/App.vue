@@ -1,54 +1,53 @@
-<script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
-</script>
-
 <template>
-  <header>
-    <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
+  <main class="max-w-840 mx-auto flex justify-center mt-72">
+    <div class="flex flex-col gap-32">
+      <form class="flex gap-8">
+        <input
+          class="rounded-4 border border-solid border-surface-secondary-03 p-8 text-title-2 font-medium text-letters-secondary-01"
+        />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+        <button
+          type="button"
+          class="bg-surface-secondary-03 px-32 rounded-4 hover:bg-surface-secondary-02 font-bold text-1 text-letters-primary transition duration-[150ms]"
+        >
+          Add
+        </button>
+      </form>
+      <ul class="flex flex-col gap-32 mt-32">
+        <li v-for="todo in todosMockData" :key="todo.text">
+          <div class="flex justify-between">
+            <p
+              class="text-title-3 cursor-pointer hover:text-letters-secondary-01 transition"
+              :class="{ 'line-through text-letters-secondary-03': todo.done }"
+            >
+              {{ todo.text }}
+            </p>
+            <button
+              type="button"
+              class="text-letters-warning transition hover:text-letters-error"
+            >
+              delete
+            </button>
+          </div>
+        </li>
+      </ul>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<script setup lang="ts">
+const todosMockData = [
+  {
+    text: "Collect packages",
+    done: false,
+  },
+  {
+    text: "Workout",
+    done: false,
+  },
+  {
+    text: "Read one chapter",
+    done: true,
+  },
+];
+</script>
