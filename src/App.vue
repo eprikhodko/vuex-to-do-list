@@ -20,7 +20,7 @@
               class="text-title-3 cursor-pointer hover:text-letters-secondary-01 transition"
               :class="{ 'line-through text-letters-secondary-03': todo.done }"
             >
-              {{ todo.text }}
+              {{ todo.text }} {{ store.state.count }}
             </p>
             <button
               type="button"
@@ -36,6 +36,11 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from "vuex";
+
+const store = useStore();
+console.log(store.state);
+
 const todosMockData = [
   {
     text: "Collect packages",
