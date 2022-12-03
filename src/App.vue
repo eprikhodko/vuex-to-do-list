@@ -15,6 +15,7 @@
           Add
         </button>
       </form>
+
       <ul class="flex flex-col gap-32 mt-32">
         <li v-for="todo in store.state.todos" :key="todo.text">
           <div class="flex justify-between">
@@ -26,6 +27,7 @@
             </p>
             <button
               type="button"
+              @click="removeTodo(todo.id)"
               class="text-letters-warning transition hover:text-letters-error"
             >
               delete
@@ -67,5 +69,9 @@ const addTodo = () => {
     });
     todoInput.value = "";
   }
+};
+
+const removeTodo = (todoID: number) => {
+  store.commit("removeTodo", todoID);
 };
 </script>
