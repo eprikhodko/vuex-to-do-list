@@ -7,19 +7,37 @@ export default createStore({
       {
         id: 0,
         text: "Collect packages",
-        isDone: false,
+        done: false,
       },
       {
         id: 1,
         text: "Workout",
-        isDone: false,
+        done: false,
       },
       {
         id: 2,
         text: "Read one chapter",
-        isDone: true,
+        done: true,
       },
     ],
+  },
+
+  getters: {
+    doneTodos(state) {
+      return state.todos.filter((todo) => todo.done);
+    },
+
+    activeTodos(state) {
+      return state.todos.filter((todo) => !todo.done);
+    },
+
+    doneTodosCount(state, getters) {
+      return getters.doneTodos.length;
+    },
+
+    activeTodosCount(state, getters) {
+      return getters.activeTodos.length;
+    },
   },
 
   mutations: {
@@ -28,8 +46,12 @@ export default createStore({
     },
 
     removeTodo(state, todoID) {
-      const filteredTodos = state.todos.filter((todo) => todo.id !== todoID);
-      state.todos = filteredTodos;
+      state.todos = state.todos.filter((todo) => todo.id !== todoID);
+    },
+
+    toggleTodoState(state, todoID) {
+      const filteredTodo = state.todos.filter((todo) => todo.id === todoID);
+      filteredTodo[0].done = !filteredTodo[0].done;
     },
   },
 });

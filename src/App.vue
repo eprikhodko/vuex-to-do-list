@@ -16,14 +16,21 @@
         </button>
       </form>
 
-      <ul class="flex flex-col gap-32 mt-32">
+      <ul class="flex flex-col gap-32">
+        <li>
+          <div class="flex justify-between max-w-160 mx-auto">
+            <p>active {{ store.getters.activeTodosCount }}</p>
+            <p>done {{ store.getters.doneTodosCount }}</p>
+          </div>
+        </li>
         <li v-for="todo in store.state.todos" :key="todo.text">
           <div class="flex justify-between">
             <p
               class="text-title-3 cursor-pointer hover:text-letters-secondary-01 transition"
-              :class="{ 'line-through text-letters-secondary-03': todo.isDone }"
+              :class="{ 'line-through text-letters-secondary-03': todo.done }"
+              @click="toggleTodoState(todo.id)"
             >
-              {{ todo.text }} {{ store.state.count }}
+              {{ todo.text }}
             </p>
             <button
               type="button"
@@ -60,11 +67,9 @@ const addTodo = () => {
 
   if (todoInput.value !== "" && !isStringContainOnlySpaces) {
     store.commit("addTodo", {
-      // text: "Sleep well",
-      // isDone: false,
       todo: {
         text: todoInput.value,
-        isDone: false,
+        done: false,
       },
     });
     todoInput.value = "";
@@ -73,5 +78,9 @@ const addTodo = () => {
 
 const removeTodo = (todoID: number) => {
   store.commit("removeTodo", todoID);
+};
+
+const toggleTodoState = (todoID: number) => {
+  store.commit("toggleTodoState", todoID);
 };
 </script>
