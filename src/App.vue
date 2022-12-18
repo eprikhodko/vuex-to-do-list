@@ -3,7 +3,9 @@
     <div class="flex flex-col gap-32">
       <form class="flex gap-8">
         <input
-          v-model="todoInput"
+          v-model="title"
+          type="text"
+          name="title"
           class="rounded-4 border border-solid border-surface-secondary-03 p-8 text-title-2 font-medium text-letters-secondary-01"
         />
 
@@ -50,29 +52,45 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 
-const todoInput = ref("");
+const title = ref("");
 
 const store = useStore();
+
+const addServerTodo = async () => {
+  // console.log({ title: title.value });
+  try {
+    const response = await fetch("http://localhost:3333/admin/add-product", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: title.value }),
+    });
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const addTodo = () => {
   const isOnlySpaces = (str: string) => {
     return /^\s*$/.test(str);
   };
 
-  const isStringContainOnlySpaces = isOnlySpaces(todoInput.value);
+  const isStringContainOnlySpaces = isOnlySpaces(title.value);
 
   if (isStringContainOnlySpaces) {
-    todoInput.value = "";
+    title.value = "";
   }
 
-  if (todoInput.value !== "" && !isStringContainOnlySpaces) {
+  if (title.value !== "" && !isStringContainOnlySpaces) {
+    addServerTodo();
+
     store.commit("addTodo", {
       todo: {
-        text: todoInput.value,
+        text: title.value,
         done: false,
       },
     });
-    todoInput.value = "";
+    title.value = "";
   }
 };
 
